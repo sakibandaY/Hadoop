@@ -13,6 +13,7 @@ import com.mr.abc_Classification.ABCReducer;
 public class ABCDriver {
 
 	public static void main(String[] args) throws Exception {
+		System.out.println("ABC DRIVER MAIN");
 		Configuration conf = new Configuration();
 		Job job = Job.getInstance(conf, "JobName");
 		job.setJarByClass(com.drivers.ABCDriver.class);
