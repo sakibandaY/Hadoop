@@ -13,7 +13,7 @@ public class NormInv implements FreeRefFunction {
 			final ValueEval p = OperandResolver.getSingleValue(args[0], ec.getRowIndex(), ec.getColumnIndex()) ;
 			final ValueEval mu = OperandResolver.getSingleValue(args[1], ec.getRowIndex(), ec.getColumnIndex()) ;
 			final ValueEval sigma = OperandResolver.getSingleValue(args[2], ec.getRowIndex(), ec.getColumnIndex()) ;			
-			return new NumberEval(this.compute(OperandResolver.coerceValueToDouble(p), OperandResolver.coerceValueToDouble(mu), OperandResolver.coerceValueToDouble(sigma)));
+			return new NumberEval(NormInv.compute(OperandResolver.coerceValueToDouble(p), OperandResolver.coerceValueToDouble(mu), OperandResolver.coerceValueToDouble(sigma)));
 		} catch (EvaluationException e) {
 			return e.getErrorEval();
 		}			 		
