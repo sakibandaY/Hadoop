@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+  <xs:element name="reporting" type="reportingType"/>
+  <xs:complexType name="technicalInformationType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="xmlRefId"/>
+      <xs:element type="xs:string" name="userId"/>
+      <xs:element type="xs:long" name="extractDateTime"/>
+      <xs:element type="xs:string" name="clientCode"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="addressType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="line" maxOccurs="unbounded" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="recipientType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="channelCode"/>
+      <xs:element type="xs:string" name="copyType"/>
+      <xs:element type="xs:int" name="id"/>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:long" name="fax"/>
+      <xs:element type="xs:string" name="reportingLanguage"/>
+      <xs:element type="xs:string" name="country"/>
+      <xs:element type="addressType" name="address"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="recipientsType">
+    <xs:sequence>
+      <xs:element type="recipientType" name="recipient"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="docInfoType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="status"/>
+      <xs:element type="xs:string" name="documentType"/>
+      <xs:element type="xs:string" name="documentSubTypeCode"/>
+      <xs:element type="xs:int" name="issueDate"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="investorType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="accountNumber"/>
+      <xs:element type="xs:string" name="designation"/>
+      <xs:element type="xs:string" name="designationOld"/>
+      <xs:element type="xs:string" name="investorType"/>
+      <xs:element type="xs:string" name="id"/>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="nameOld"/>
+      <xs:element type="xs:string" name="contactName"/>
+      <xs:element type="xs:string" name="externalReference"/>
+      <xs:element type="xs:string" name="languageCode"/>
+      <xs:element type="xs:string" name="currency"/>
+      <xs:element type="xs:string" name="citizenship"/>
+      <xs:element type="xs:string" name="countryDomicile"/>
+      <xs:element type="xs:string" name="title"/>
+      <xs:element type="addressType" name="address"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="agentType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="id"/>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="contactName"/>
+      <xs:element type="xs:string" name="accountNumber"/>
+      <xs:element type="xs:string" name="designation"/>
+      <xs:element type="xs:string" name="languageCode"/>
+      <xs:element type="xs:string" name="currency"/>
+      <xs:element type="xs:string" name="officeCode"/>
+      <xs:element type="addressType" name="address"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="customerContactType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="contactName"/>
+      <xs:element type="xs:string" name="phone"/>
+      <xs:element type="xs:string" name="fax"/>
+      <xs:element type="xs:string" name="email"/>
+      <xs:element type="addressType" name="address"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="transferAgentType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="id"/>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="contactName"/>
+      <xs:element type="xs:string" name="phone"/>
+      <xs:element type="xs:string" name="fax"/>
+      <xs:element type="xs:string" name="email"/>
+      <xs:element type="addressType" name="address"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="managementCompanyType">
+    <xs:sequence>
+      <xs:element type="xs:int" name="id"/>
+      <xs:element type="xs:string" name="name"/>
+      <xs:element type="xs:string" name="longName"/>
+      <xs:element type="addressType" name="address"/>
+      <xs:element type="xs:string" name="country"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="fundType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="fundName"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="documentType">
+    <xs:sequence>
+      <xs:element type="recipientsType" name="recipients" maxOccurs="unbounded" minOccurs="0"/>
+      <xs:element type="docInfoType" name="docInfo"/>
+      <xs:element type="investorType" name="investor"/>
+      <xs:element type="agentType" name="agent"/>
+      <xs:element type="customerContactType" name="customerContact"/>
+      <xs:element type="transferAgentType" name="transferAgent"/>
+      <xs:element type="managementCompanyType" name="managementCompany"/>
+      <xs:element type="fundType" name="fund"/>
+    </xs:sequence>
+    <xs:attribute type="xs:string" name="docRef"/>
+  </xs:complexType>
+  <xs:complexType name="countsType">
+    <xs:sequence>
+      <xs:element type="xs:string" name="recipientCount"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="reportingType">
+    <xs:sequence>
+      <xs:element type="technicalInformationType" name="technicalInformation"/>
+      <xs:element type="documentType" name="document"/>
+      <xs:element type="countsType" name="counts"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
